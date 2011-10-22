@@ -5,7 +5,7 @@
 	<artifactId>adreamzone-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>adreamzone-web DEV</name>
+	<name>A-dream-zone</name>
 	<ciManagement>
 		<system>Continuum</system>
 		<url>code.a-dream-zone.com/continuum</url>
@@ -16,6 +16,18 @@
 		<tag>HEAD</tag>
 		<url>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/</url>
 	</scm>
+	<distributionManagement>
+		<repository>
+			<id>internal</id>
+			<name>Internal Release Repository</name>
+			<url>dav:http://code.a-dream-zone.com/archiva/repository/internal/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>dav:http://code.a-dream-zone.com/archiva/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.adreamzone</groupId>
