@@ -11,7 +11,7 @@
 		<url>code.a-dream-zone.com/continuum</url>
 	</ciManagement>
 	<scm>
-		<connection>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/</connection>
+		<connection>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/trunk/</connection>
 		<developerConnection>http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/trunk/</developerConnection>
 		<tag>HEAD</tag>
 		<url>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/</url>
@@ -53,5 +53,4 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
 </project>
