@@ -6,6 +6,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>adreamzone-web DEV</name>
+	<ciManagement>
+		<system>Continuum</system>
+		<url>code.a-dream-zone.com/continuum</url>
+	</ciManagement>
+	<scm>
+		<connection>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/</connection>
+		<developerConnection>http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/trunk/</developerConnection>
+		<tag>HEAD</tag>
+		<url>scm:svn:http://code.a-dream-zone.com/svn/adreamzone/adreamzone-web/</url>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>com.adreamzone</groupId>
