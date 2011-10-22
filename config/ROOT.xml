@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <Context path="/"   docBase="/home/adi/Documents/dreamzone/adreamzone-web/web/">
+          
+	 <Resource name="jdbc/adreamzone" auth="Container" type="javax.sql.DataSource"
+	           username="a-dream-zone"
+	           password="a-dream-zone"
+	           driverClassName="org.postgresql.Driver"
+	           url="jdbc:postgresql://192.168.26.1:5432/ADreamZone_dev" />
+ </Context>
