@@ -4,7 +4,6 @@
 	<groupId>com.adreamzone</groupId>
 	<artifactId>adreamzone-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>A-dream-zone Web</name>
 	<ciManagement>
 		<system>Continuum</system>
@@ -51,8 +50,6 @@
 						<httpPort>8080</httpPort>
 						<httpsPort>8443</httpsPort>
 					</domain>
-					<debug>true</debug>
-                    <echo>false</echo>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -72,7 +69,7 @@
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Internal Snapshot Repository</name>
-			<url>dav:http://code.a-dream-zone.com/archiva/repository/snapshots</url>
+			<url>dav:http://code.a-dream-zone.com/archiva/repository/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<dependencies>
