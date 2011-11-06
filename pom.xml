@@ -90,10 +90,10 @@
 			<version>3.2.4-Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.newdawn.slick</groupId>
-			<artifactId>slick</artifactId>
-			<version>1.0.0</version>
-		</dependency>	
+<groupId>org.newdawn.slick.tools.hiero</groupId>
+<artifactId>hiero</artifactId>
+<version>1.0.0</version>
+</dependency>
 		<!-- dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>javax.faces-api</artifactId>
