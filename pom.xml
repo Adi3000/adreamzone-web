@@ -73,7 +73,7 @@
 			<url>dav:http://code.a-dream-zone.com/archiva/repository/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-	<dependencies>
+	<!-- dependencies>
 		<dependency>
 			<groupId>com.adreamzone</groupId>
 			<artifactId>adreamzone-common</artifactId>
@@ -97,5 +97,5 @@
 			<version>5</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
+	</dependencies-->
 </project>
