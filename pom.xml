@@ -30,7 +30,7 @@
 				<version>2.1</version>
 				<configuration>
 					<user>admin</user>
-					<!-- <adminPassword>password</adminPassword>-->
+					<adminPassword>aqw123zsx</adminPassword>
 					<glassfishDirectory>/opt/glassfishv3/glassfish/</glassfishDirectory>
 					<components>
 						<component>
