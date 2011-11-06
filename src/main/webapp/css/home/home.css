@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+#titleHomePage{
+	clear:both;
+}
+#toolbar{
+	width: 100%;
+	min-width: 100%;
+	clear:both;
+}
+#toolbarSearch{
+	float:left;
+}
+#toolbarLogin{
+	float:right;
+}
+#bodyPart{
+	width : 100%;
+	clear:both;
+}
+#newsWatcher{
+	float: right;
+}
+#menu{
+	
+}
+#edito{
+	width : 100%;	
+	clear: both;
+}
