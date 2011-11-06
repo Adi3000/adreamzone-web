@@ -51,6 +51,8 @@
 						<httpPort>8080</httpPort>
 						<httpsPort>8443</httpsPort>
 					</domain>
+					<debug>true</debug>
+                    <echo>false</echo>
 				</configuration>
 			</plugin>
 		</plugins>
