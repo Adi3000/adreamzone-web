@@ -74,11 +74,16 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<dependencies>
-		<dependency>
+		<!-- dependency>
 			<groupId>com.adreamzone</groupId>
 			<artifactId>adreamzone-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency-->
+		<dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>		
 		<!-- dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>javax.faces-api</artifactId>
