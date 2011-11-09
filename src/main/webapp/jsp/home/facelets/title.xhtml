@@ -11,11 +11,22 @@
 <div id="toolbar">
 	<div id="toolbarSearch">
 		<!-- May use an include there -->
-		<em>searchForm</em>
+		<h:form id="searchForm">
+			<h:outputLabel for="searchField">#{text_home.QUICK_SEARCH_LABEL}</h:outputLabel>
+			<h:inputText id="searchField"/>
+			<h:commandButton value="#{text_home.QUICK_SEARCH_LABEL}" />
+		</h:form>
 	</div>
 	<div id="toolbarLogin">
-		<!-- May use an include there -->
-		<em>loginForm</em>
+		<fieldset>
+		<h:form id="loginForm">
+			<legend>#{text_home.CONNEXION_FIELDSET}</legend>
+			<h:outputLabel for="loginField">#{text_home.LOGIN_LABEL}</h:outputLabel>
+			<h:inputText id="loginField"></h:inputText>
+			<h:outputLabel for="passwordField">#{text_home.PASSWORD_LABEL}</h:outputLabel>
+			<h:inputSecret id="passwordField"/>
+		</h:form>
+		</fieldset>
 	</div>
 </div>
 </body>

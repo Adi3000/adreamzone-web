@@ -18,13 +18,22 @@
 	width : 100%;
 	clear:both;
 }
+#bodyPart > .floatLeft{
+	width : 900px;
+}
+#bodyPart > .floatRight{
+	width : 300px;
+}
 #newsWatcher{
 	float: right;
 }
 #menu{
-	
+	width : 200px;	
 }
 #edito{
 	width : 100%;	
 	clear: both;
+}
+#frontPage{
+	width: 600px;
 }
