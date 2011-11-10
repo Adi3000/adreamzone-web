@@ -47,7 +47,7 @@
 				<version>2.1</version>
 				<configuration>
 					<user>admin</user>
-					<passwordFile>/home/adi/.glassfish</passwordFile>
+					<passwordFile>/opt/glassfishv3/.glassfish_password</passwordFile>
 					<glassfishDirectory>/opt/glassfishv3/glassfish/</glassfishDirectory>
 					<components>
 						<component>
