@@ -106,16 +106,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.richfaces.ui.common</groupId>
-			<artifactId>richfaces-ui-common-ui</artifactId>
-			<version>4.0.0.Final</version>
-		</dependency>
-				<dependency>
-			<groupId>org.richfaces.ui.common</groupId>
-			<artifactId>richfaces-ui-common-api</artifactId>
-			<version>4.0.0.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>org.richfaces.core</groupId>
 			<artifactId>richfaces-core-impl</artifactId>
 			<version>4.0.0.Final</version>
