@@ -83,7 +83,7 @@
 			<artifactId>adreamzone-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.richfaces</groupId>
 			<artifactId>richfaces-bom</artifactId>
 			<version>4.0.0.Final</version>
@@ -115,6 +115,6 @@
 			<artifactId>annotations</artifactId>
 			<version>4.0.0.Final</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 </project>
