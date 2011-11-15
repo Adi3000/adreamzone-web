@@ -4,13 +4,22 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets" >
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="css/common/common.css" />
-<link rel="stylesheet" type="text/css" href="css/home/home.css" />
-<title>A-Dream-Zone</title>
-</head>
-<body>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/common/common.css" />
+	<link rel="stylesheet" type="text/css" href="css/home/home.css" />
+	<link type="text/css" href="css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+			<script type="text/javascript">
+			$(function(){
+				// Accordion
+				//$("#accordion").accordion({ header: "div.menuHeader" });
+			});
+		</script>
+	<title>A-Dream-Zone</title>
+</h:head>
+<h:body>
 	<div id="wallpaper">
 		<ui:include src="/jsp/home/facelets/title.xhtml" />
 		<div id="bodyPart">
@@ -22,5 +31,5 @@
 			</div>
 		</div>
 	</div>
-</body>
+</h:body>
 </html>
