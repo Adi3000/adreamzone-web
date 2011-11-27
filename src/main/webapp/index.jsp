@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="wallpaper">
-		<%@include file="/jsp/home/facelets/title.xhtml"%>
+		<%@include file="/jsp/home/title.xhtml"%>
 		<div id="bodyPart">
 			<div class="floatLeft">
 				<%@include file="/jsp/home/mainPart.jsp"%>

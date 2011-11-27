@@ -1,0 +1,9 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<div id="frontPage" class="floatRight">
+		<ui:include src="/jsp/#{param['p']}/#{param['c'] == null ? 'default' : param['c']}.xhtml" />
+	</div>
+	<ui:include src="/jsp/home/menu.xhtml" />
+</ui:composition>

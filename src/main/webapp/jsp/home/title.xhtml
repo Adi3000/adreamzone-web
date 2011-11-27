@@ -1,7 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<div id="titleHomePage">
 		<h1>A Dream Zone</h1>
 		<h2>Welcome to your brand new world !!</h2>
@@ -16,16 +17,19 @@
 				<h:commandButton value="#{text_home.QUICK_SEARCH_LABEL}" />
 			</h:form>
 		</div>
-		<div id="toolbarLogin">
-			<fieldset>
-				<h:form id="loginForm">
-					<legend>#{text_home.CONNEXION_FIELDSET}</legend>
-					<h:outputLabel for="loginField">#{text_home.LOGIN_LABEL}</h:outputLabel>
-					<h:inputText id="loginField"></h:inputText>
-					<h:outputLabel for="passwordField">#{text_home.PASSWORD_LABEL}</h:outputLabel>
-					<h:inputSecret id="passwordField" />
-				</h:form>
-			</fieldset>
-		</div>
+		<h:panelGroup id="toolbarLogin">
+			<c:choose>
+				<c:when test="{user != null }" >
+					<h:outputFormat value="#{text_home.WELCOME_MESSAGE}">
+						<f:param value="#{userBean.login}" />	
+					</h:outputFormat>
+				</c:when>
+				<c:otherwise>
+					<a href="./?p=profile&amp;c=login" title="#{text_home.CONNEXION}">#{text_home.CONNEXION}</a>
+					<a href="./?p=profile&amp;c=login" title="#{text_home.REGISTER}">#{text_home.REGISTER}</a>
+				</c:otherwise>
+			</c:choose>	
+		</h:panelGroup>
+
 	</div>
 </ui:composition>

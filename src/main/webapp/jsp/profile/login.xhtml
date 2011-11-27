@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<div id="frontPage" class="floatRight">
+		<fieldset>
+			<h:form id="loginForm">
+				<legend>#{text_profile.CONNEXION_FIELDSET}</legend>
+				<div class="loginField registerField">
+					<h:outputLabel for="loginField">#{text_profile.LOGIN_LABEL}</h:outputLabel>
+					<h:inputText id="loginField" value="#{userBean.login}"></h:inputText>
+				</div>
+				<div class="loginField registerField">
+					<h:outputLabel for="passwordField">#{text_profile.PASSWORD_LABEL}</h:outputLabel>
+					<h:inputSecret id="passwordField" value="#{userBean.password}"/>
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="passwordFieldConfirmation">#{text_profile.PASSWORD_LABEL_CONFIRM}</h:outputLabel>
+					<h:inputSecret id="passwordFieldConfirmation" value="#{userBean.passwordConfirm}" />
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="addressMailField">#{text_profile.MAILBOX_LABEL}</h:outputLabel>
+					<h:inputSecret id="addressMailField"  />
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="addressMailFieldConfirmation">#{text_profile.MAILBOX_LABEL_CONFIRM}</h:outputLabel>
+					<h:inputText id="addressMailFieldConfirmation" value="#{userBean.mailConfirm}"/>
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="realName">#{text_profile.REALNAME}</h:outputLabel>
+					<h:inputText id="realName" />
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="realSurname">#{text_profile.REALSURNAME}</h:outputLabel>
+					<h:inputText id="realSurname" />
+				</div>
+				<div class="registerField">
+					<h:outputLabel for="sexe">#{text_profile.USERSEXE}</h:outputLabel>
+					<h:inputText id="sexe" value="" />
+				</div>
+				<h:commandButton value="Register" action="#{userBean.registerUser}" />
+			</h:form>
+		</fieldset>
+	</div>
+</ui:composition>
