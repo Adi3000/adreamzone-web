@@ -71,25 +71,27 @@ public class UserBean extends User implements Serializable{
 
 		//get textbox1 value
 		UIInput uiText1 = (UIInput)components.findComponent("addressMailField");
-		String text1 = uiText1.getLocalValue().toString();
+		
 
 		//get textbox2 value
 		UIInput uiText2 = (UIInput)components.findComponent("addressMailFieldConfirmation");
-		String text2 = uiText2.getLocalValue().toString();
-
-		if(!text1.equals(text2)){
-
-			FacesMessage msg = new FacesMessage("Email check failed", 
-					"Address mail do not match with previous given");
-
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-
-			fc.addMessage(components.getClientId(), msg);
-
-			//passed to the Render Response phase
-			fc.renderResponse();
+		if(uiText1 != null && uiText2 != null && uiText2.getLocalValue() != null && uiText1.getLocalValue() != null){
+			String text1 = uiText1.getLocalValue().toString();
+			String text2 = uiText2.getLocalValue().toString();
+	
+			if(!text1.equals(text2)){
+	
+				FacesMessage msg = new FacesMessage("Email check failed", 
+						"Address mail do not match with previous given");
+	
+				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+	
+				fc.addMessage(components.getClientId(), msg);
+	
+				//passed to the Render Response phase
+				fc.renderResponse();
+			}
 		}
-
 	}
 	public void validatePassword(ComponentSystemEvent event){
 
@@ -99,25 +101,26 @@ public class UserBean extends User implements Serializable{
 
 		//get textbox1 value
 		UIInput uiText1 = (UIInput)components.findComponent("passwordField");
-		String text1 = uiText1.getLocalValue().toString();
+		
 
 		//get textbox2 value
 		UIInput uiText2 = (UIInput)components.findComponent("passwordFieldConfirmation");
-		String text2 = uiText2.getLocalValue().toString();
-
-		if(!text1.equals(text2)){
-
-			FacesMessage msg = new FacesMessage("Password check failed", 
-					"Password do not match with previous given");
-
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-
-			fc.addMessage(components.getClientId(), msg);
-
-			//passed to the Render Response phase
-			fc.renderResponse();
+		if(uiText1 != null && uiText2 != null && uiText2.getLocalValue() != null && uiText1.getLocalValue() != null){
+			String text2 = uiText2.getLocalValue().toString();
+			String text1 = uiText1.getLocalValue().toString();
+			if(!text1.equals(text2)){
+	
+				FacesMessage msg = new FacesMessage("Password check failed", 
+						"Password do not match with previous given");
+	
+				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+	
+				fc.addMessage(components.getClientId(), msg);
+	
+				//passed to the Render Response phase
+				fc.renderResponse();
+			}
 		}
-
 	}
 	public String registerUser()
 	{
