@@ -2,8 +2,13 @@ package com.adreamzone.web.beans;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 
 import com.adreamzone.common.database.IDatabaseConstants;
 import com.adreamzone.common.database.session.DatabaseSession;
@@ -18,6 +23,8 @@ public class UserBean extends User implements Serializable{
 	private static final long serialVersionUID = 173422903879328102L;
 	private String passwordConfirm;
 	private String mailConfirm;
+	//TODO move to DataObject User
+	private String mail;
 
 	/**
 	 * @return the passwordConfirm
@@ -43,6 +50,75 @@ public class UserBean extends User implements Serializable{
 	public void setMailConfirm(String mailConfirm) {
 		this.mailConfirm = mailConfirm;
 	}
+
+	/**
+	 * @return the mail
+	 */
+	public String getMail() {
+		return mail;
+	}
+	/**
+	 * @param mail the mail to set
+	 */
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public void validateAddressMail(ComponentSystemEvent event){
+
+		FacesContext fc = FacesContext.getCurrentInstance();
+
+		UIComponent components = event.getComponent();
+
+		//get textbox1 value
+		UIInput uiText1 = (UIInput)components.findComponent("addressMailField");
+		String text1 = uiText1.getLocalValue().toString();
+
+		//get textbox2 value
+		UIInput uiText2 = (UIInput)components.findComponent("addressMailFieldConfirmation");
+		String text2 = uiText2.getLocalValue().toString();
+
+		if(!text1.equals(text2)){
+
+			FacesMessage msg = new FacesMessage("Email check failed", 
+					"Address mail do not match with previous given");
+
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+
+			fc.addMessage(components.getClientId(), msg);
+
+			//passed to the Render Response phase
+			fc.renderResponse();
+		}
+
+	}
+	public void validatePassword(ComponentSystemEvent event){
+
+		FacesContext fc = FacesContext.getCurrentInstance();
+
+		UIComponent components = event.getComponent();
+
+		//get textbox1 value
+		UIInput uiText1 = (UIInput)components.findComponent("passwordField");
+		String text1 = uiText1.getLocalValue().toString();
+
+		//get textbox2 value
+		UIInput uiText2 = (UIInput)components.findComponent("passwordFieldConfirmation");
+		String text2 = uiText2.getLocalValue().toString();
+
+		if(!text1.equals(text2)){
+
+			FacesMessage msg = new FacesMessage("Password check failed", 
+					"Password do not match with previous given");
+
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+
+			fc.addMessage(components.getClientId(), msg);
+
+			//passed to the Render Response phase
+			fc.renderResponse();
+		}
+
+	}
 	public String registerUser()
 	{
 		User newUser = new User();
@@ -53,6 +129,6 @@ public class UserBean extends User implements Serializable{
 		db.persist(newUser);
 		db.commit();
 		return "test";
-		
+
 	}
 }

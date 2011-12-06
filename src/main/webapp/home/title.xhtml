@@ -1,35 +1,44 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-	<div id="titleHomePage">
-		<h1>A Dream Zone</h1>
-		<h2>Welcome to your brand new world !!</h2>
-	</div>
-	<div id="toolbar">
-
-		<div id="toolbarSearch">
-			<!-- May use an include there -->
-			<h:form id="searchForm">
-				<h:outputLabel for="searchField">#{text_home.QUICK_SEARCH_LABEL}</h:outputLabel>
-				<h:inputText id="searchField" />
-				<h:commandButton value="#{text_home.QUICK_SEARCH_LABEL}" />
-			</h:form>
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:c="http://java.sun.com/jsp/jstl/core">
+		<div id="titleHomePage">
+			<h1>A Dream Zone</h1>
+			<h2>Welcome to your brand new world !!</h2>
 		</div>
-		<h:panelGroup id="toolbarLogin">
-			<c:choose>
-				<c:when test="{user != null }" >
-					<h:outputFormat value="#{text_home.WELCOME_MESSAGE}">
-						<f:param value="#{userBean.login}" />	
-					</h:outputFormat>
-				</c:when>
-				<c:otherwise>
-					<a href="./?p=profile&amp;c=login" title="#{text_home.CONNEXION}">#{text_home.CONNEXION}</a>
-					<a href="./?p=profile&amp;c=login" title="#{text_home.REGISTER}">#{text_home.REGISTER}</a>
-				</c:otherwise>
-			</c:choose>	
-		</h:panelGroup>
+		<div id="toolbar">
 
-	</div>
-</ui:composition>
+			<div id="toolbarSearch">
+				<!-- May use an include there -->
+				<h:form id="searchForm">
+					<h:outputLabel for="searchField">#{text_home.QUICK_SEARCH_LABEL}</h:outputLabel>
+					<h:inputText id="searchField" />
+					<h:commandButton value="#{text_home.QUICK_SEARCH_LABEL}" />
+				</h:form>
+			</div>
+			<h:panelGroup id="toolbarLogin">
+				<c:choose>
+					<c:when test="{user != null }">
+						<h:outputFormat value="#{text_home.WELCOME_MESSAGE}">
+							<f:param value="#{userBean.login}" />
+						</h:outputFormat>
+					</c:when>
+					<c:otherwise>
+						<h:link outcome="/profile/login" value="#{text_home.CONNEXION}" />&nbsp;
+						<h:link outcome="/profile/login" value="#{text_home.REGISTER}" />
+					</c:otherwise>
+				</c:choose>
+			</h:panelGroup>
+
+		</div>
+	</ui:composition>
+</h:body>
+</html>
