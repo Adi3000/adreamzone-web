@@ -2,56 +2,23 @@ package com.adreamzone.web.beans;
 
 import java.io.Serializable;
 
-import javax.faces.bean.*;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import com.adreamzone.common.database.IDatabaseConstants;
+import com.adreamzone.common.database.session.DatabaseSession;
+import com.adreamzone.common.model.users.User;
 
 @ManagedBean
 @SessionScoped
-public class UserBean implements Serializable{
+public class UserBean extends User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 173422903879328102L;
 	private String passwordConfirm;
 	private String mailConfirm;
-	private String login;
-	private String token;
-	private String password; 
-	/**
-	 * @return the login
-	 */
-	public String getLogin() {
-		return login;
-	}
-	/**
-	 * @return the token
-	 */
-	public String getToken() {
-		return token;
-	}
-	/**
-	 * @param token the token to set
-	 */
-	public void setToken(String token) {
-		this.token = token;
-	}
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	/**
-	 * @param login the login to set
-	 */
-	public void setLogin(String login) {
-		this.login = login;
-	}
+
 	/**
 	 * @return the passwordConfirm
 	 */
@@ -78,8 +45,13 @@ public class UserBean implements Serializable{
 	}
 	public String registerUser()
 	{
-		//DatabaseSession db =  new DatabaseSession();
-		//db.persist(this);
+		User newUser = new User();
+		newUser.setLogin(getLogin());
+		newUser.setPassword(getPassword());
+		DatabaseSession db =  new DatabaseSession();
+		newUser.setDatabaseOperation(IDatabaseConstants.INSERT);
+		db.persist(newUser);
+		db.commit();
 		return "test";
 		
 	}
