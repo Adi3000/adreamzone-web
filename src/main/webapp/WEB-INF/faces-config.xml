@@ -18,12 +18,4 @@
 			<var>text_profile</var>
 		</resource-bundle>
 	</application>
-	<navigation-rule>
-		<from-view-id>/index.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{userBean.registerUser}</from-action>
-			<from-outcome>test</from-outcome>
-			<to-view-id>test.jsf</to-view-id>
-		</navigation-case>
-	</navigation-rule>
 </faces-config>

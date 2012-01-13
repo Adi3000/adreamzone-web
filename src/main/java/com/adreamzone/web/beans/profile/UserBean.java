@@ -1,18 +1,28 @@
-package com.adreamzone.web.beans;
+package com.adreamzone.web.beans.profile;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.PropertyUtils;
+import org.hibernate.util.PropertiesHelper;
 
 import com.adreamzone.common.database.IDatabaseConstants;
 import com.adreamzone.common.database.session.DatabaseSession;
-import com.adreamzone.common.model.users.User;
+import com.adreamzone.common.database.data.model.users.User;
+import com.adreamzone.common.security.Security;
 
 @ManagedBean
 @SessionScoped
@@ -21,10 +31,9 @@ public class UserBean extends User implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 173422903879328102L;
-	private String passwordConfirm;
-	private String mailConfirm;
-	//TODO move to DataObject User
-	private String mail;
+	private transient String passwordConfirm;
+	private transient String mailConfirm;
+	private boolean newUser;
 
 	/**
 	 * @return the passwordConfirm
@@ -52,16 +61,16 @@ public class UserBean extends User implements Serializable{
 	}
 
 	/**
-	 * @return the mail
+	 * @return the newUser
 	 */
-	public String getMail() {
-		return mail;
+	public boolean isNewUser() {
+		return newUser;
 	}
 	/**
-	 * @param mail the mail to set
+	 * @param newUser the newUser to set
 	 */
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setNewUser(boolean newUser) {
+		this.newUser = newUser;
 	}
 	public void validateAddressMail(ComponentSystemEvent event){
 
@@ -125,13 +134,48 @@ public class UserBean extends User implements Serializable{
 	public String registerUser()
 	{
 		User newUser = new User();
-		newUser.setLogin(getLogin());
-		newUser.setPassword(getPassword());
+		this.setLogginUserInfo(newUser);
 		DatabaseSession db =  new DatabaseSession();
 		newUser.setDatabaseOperation(IDatabaseConstants.INSERT);
 		db.persist(newUser);
 		db.commit();
+		this.newUser = true;
 		return "test";
 
+	}
+	public String loginUser()
+	{
+		User user = new User();
+		this.setLogginUserInfo(user);
+		DatabaseSession db =  new DatabaseSession();
+		user.setDatabaseOperation(IDatabaseConstants.UPDATE);
+		db.persist(user);
+		db.commit();
+		this.newUser = false;
+		return "test";
+
+	}
+	private void setLogginUserInfo(User user){
+		Timestamp now = new Timestamp(new java.util.Date().getTime());
+		ExternalContext externe = FacesContext.getCurrentInstance().getExternalContext();
+		String ip = ((HttpServletRequest)externe.getRequest()).getRemoteAddr();
+		String host = ((HttpServletRequest)externe.getRequest()).getRemoteHost();
+		this.setLastDateLogin(now);
+		this.setLastIpLogin(ip);
+		this.setLastHostNameLogin(host);
+		try {
+			PropertyUtils.copyProperties(user, this);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		user.setToken(Security.generateSessionID(this.hashCode(), user) );
+		this.setToken(user.getToken());
 	}
 }
