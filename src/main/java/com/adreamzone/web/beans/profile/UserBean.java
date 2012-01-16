@@ -22,18 +22,24 @@ import org.hibernate.util.PropertiesHelper;
 import com.adreamzone.common.database.IDatabaseConstants;
 import com.adreamzone.common.database.session.DatabaseSession;
 import com.adreamzone.common.database.data.model.users.User;
+import com.adreamzone.common.database.data.model.users.Users;
 import com.adreamzone.common.security.Security;
 
 @ManagedBean
 @SessionScoped
 public class UserBean extends User implements Serializable{
+	
+	public static final int ANONYMOUS = -1;
+	public static final int NOT_LOGGED_IN = 0;
+	public static final int NEW_USER = 1;
+	public static final int LOGGED_IN = 2;	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 173422903879328102L;
 	private transient String passwordConfirm;
 	private transient String mailConfirm;
-	private boolean newUser;
+	private int loginState;
 
 	/**
 	 * @return the passwordConfirm
@@ -63,14 +69,14 @@ public class UserBean extends User implements Serializable{
 	/**
 	 * @return the newUser
 	 */
-	public boolean isNewUser() {
-		return newUser;
+	public int getLoginState() {
+		return loginState;
 	}
 	/**
 	 * @param newUser the newUser to set
 	 */
-	public void setNewUser(boolean newUser) {
-		this.newUser = newUser;
+	public void getLoginState(int loginState) {
+		this.loginState = loginState;
 	}
 	public void validateAddressMail(ComponentSystemEvent event){
 
@@ -133,49 +139,80 @@ public class UserBean extends User implements Serializable{
 	}
 	public String registerUser()
 	{
+		loginState = NOT_LOGGED_IN;
 		User newUser = new User();
 		this.setLogginUserInfo(newUser);
 		DatabaseSession db =  new DatabaseSession();
 		newUser.setDatabaseOperation(IDatabaseConstants.INSERT);
 		db.persist(newUser);
 		db.commit();
-		this.newUser = true;
+		this.loginState = NEW_USER;
 		return "test";
 
 	}
 	public String loginUser()
 	{
-		User user = new User();
-		this.setLogginUserInfo(user);
-		DatabaseSession db =  new DatabaseSession();
+		loginState = NOT_LOGGED_IN;
+		Users userSearch = new Users();
+		User user = userSearch.getUserByLogin(this.getLogin());
+		if(user.getPassword() != null && user.getPassword().equals(this.getPassword())){
+			this.setLogginUserInfo(user);
+			this.loginState = LOGGED_IN;
+		}
 		user.setDatabaseOperation(IDatabaseConstants.UPDATE);
-		db.persist(user);
-		db.commit();
-		this.newUser = false;
-		return "test";
-
+		userSearch.persist(user);
+		userSearch.commit();
+		switch (loginState) {
+		case LOGGED_IN:
+			return "index";
+		default:
+			return "login?logInFail="+loginState; 
+		}
+	}
+	public String logoutUser()
+	{
+		
+		Users userSearch = new Users();
+		User user = userSearch.getUserByLogin(this.getLogin());
+		user.setToken(null);
+		user.setDatabaseOperation(IDatabaseConstants.UPDATE);
+		userSearch.persist(user);
+		userSearch.commit();
+		//Unset properties of this user
+		this.copyProperties(new User());
+		loginState = NOT_LOGGED_IN;
+		switch (loginState) {
+		case NOT_LOGGED_IN:
+			return "index";
+		default:
+			return "login#?logInFail="+loginState; 
+		}
 	}
 	private void setLogginUserInfo(User user){
 		Timestamp now = new Timestamp(new java.util.Date().getTime());
 		ExternalContext externe = FacesContext.getCurrentInstance().getExternalContext();
 		String ip = ((HttpServletRequest)externe.getRequest()).getRemoteAddr();
 		String host = ((HttpServletRequest)externe.getRequest()).getRemoteHost();
-		this.setLastDateLogin(now);
-		this.setLastIpLogin(ip);
-		this.setLastHostNameLogin(host);
-		try {
-			PropertyUtils.copyProperties(user, this);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		user.setLastDateLogin(now);
+		user.setLastIpLogin(ip);
+		user.setLastHostNameLogin(host);
 		user.setToken(Security.generateSessionID(this.hashCode(), user) );
+		this.copyProperties(user);
+	}
+	
+	private void copyProperties(User user){
+		this.setId(user.getId());
+		this.setMail(user.getMail());
+		this.setLogin(user.getLogin());
+		this.setLastDateLogin(user.getLastDateLogin());
+		this.setLastIpLogin(user.getLastIpLogin());
+		this.setLastHostNameLogin(user.getLastHostNameLogin());
 		this.setToken(user.getToken());
 	}
+	
+	public Integer getLoggedIn()
+	{
+		return (loginState == LOGGED_IN || loginState == NEW_USER) ? new Integer(1) : null ;
+	}
+	
 }

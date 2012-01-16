@@ -3,12 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:hh="http://balusc.net/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
-	<ui:composition template="/profile/template/mainLayout.xhtml">
-		<ui:define name="profileDiv">
+	<ui:composition template="/manager/template/mainLayout.xhtml">
+		<ui:define name="managerDiv">
+			<h:form>
+				<hh:inputFile id="mainFile"></hh:inputFile>
+			</h:form>
 			<h:outputText>#{userBean.login}</h:outputText>
-			<h:link outcome="/manager/index">Manage Dreamed Elements</h:link>
+			<h:link outcome="dreammaker">Add dreamed elements</h:link>
 		</ui:define>
 	</ui:composition>
 </body>

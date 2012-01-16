@@ -17,5 +17,5 @@
 			<base-name>l18n.web.text.profile</base-name>
 			<var>text_profile</var>
 		</resource-bundle>
-	</application>
+	</application>		
 </faces-config>
