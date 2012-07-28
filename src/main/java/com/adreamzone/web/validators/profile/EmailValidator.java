@@ -22,7 +22,7 @@ public class EmailValidator implements Validator {
 	public EmailValidator(){
 		  pattern = Pattern.compile(EMAIL_PATTERN);
 	}
-	@Override
+
 	public void validate(FacesContext arg0, UIComponent arg1, Object value)	throws ValidatorException {
 		matcher = pattern.matcher(value.toString());
 		if(!matcher.matches()){

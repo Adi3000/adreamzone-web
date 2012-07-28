@@ -13,7 +13,6 @@ import com.adreamzone.common.database.data.model.users.Users;
 @FacesValidator("com.adreamzone.web.validators.profile.UserLoginValidator")
 public class UserLoginValidator implements Validator {
 		
-	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object value)	throws ValidatorException {
 		Users userSearch = new Users();
 		User user = userSearch.getUserByLogin(value.toString());

@@ -53,12 +53,10 @@ public class MultipartFilter implements Filter {
 
     // Actions ------------------------------------------------------------------------------------
 
-    @Override
     public void init(FilterConfig config) throws ServletException {
         this.location = config.getInitParameter(INIT_PARAM_LOCATION);
     }
 
-    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
         throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -68,7 +66,6 @@ public class MultipartFilter implements Filter {
         chain.doFilter(request, response);
     }
 
-    @Override
     public void destroy() {
         // NOOP.
     }
