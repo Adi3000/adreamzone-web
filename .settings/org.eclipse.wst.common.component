@@ -4,6 +4,10 @@
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 		<wb-resource deploy-path="/" source-path="/src/main/webapp"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="adreamzone-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/adreamzone-common/adreamzone-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
 		<property name="context-root" value="adreamzone-web"/>
 		<property name="java-output-path" value="/adreamzone-web/target/classes"/>
 	</wb-module>
