@@ -1,8 +1,6 @@
 package com.adreamzone.web.beans.profile;
 
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.faces.application.FacesMessage;
@@ -14,11 +12,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.hibernate.util.PropertiesHelper;
-
 import com.adreamzone.common.database.IDatabaseConstants;
 import com.adreamzone.common.database.session.DatabaseSession;
 import com.adreamzone.common.database.data.model.users.User;

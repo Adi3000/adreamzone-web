@@ -38,7 +38,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @WebFilter(urlPatterns = { "/*" }, initParams = {
-    @WebInitParam(name = "location", value = "/upload") })
+    @WebInitParam(name = "location", value = "/home/www/var/adreamzone/files") })
 public class MultipartFilter implements Filter {
 
     // Constants ----------------------------------------------------------------------------------
