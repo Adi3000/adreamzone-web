@@ -20,6 +20,20 @@
 		<name>A-Dream-Zone</name>
 		<url>http://www.a-dream-zone.com</url>
 	</organization>
+    <distributionManagement>
+	  <!-- use the following if you're not using a snapshot version. -->
+	  <repository>
+	    <id>releases</id>
+	    <name>Nexus Snapshot Repository</name>
+	    <url>http://code.a-dream-zone.com/nexus/content/repositories/releases</url>
+	  </repository>
+	  <!-- use the following if you ARE using a snapshot version. -->
+	  <snapshotRepository>
+	    <id>snapshots</id>
+	    <name>Nexus Snapshot Repository</name>
+	    <url>http://code.a-dream-zone.com/nexus/content/repositories/snapshots</url>
+	  </snapshotRepository>
+	</distributionManagement>
 	<build>
 		<extensions>
 			<extension>

@@ -8,9 +8,9 @@
 <body>
 	<ui:composition template="/manager/template/mainLayout.xhtml">
 		<ui:define name="managerDiv">
-			
-				Success !!!
-
+			<ui:repeat var="file" value="#{fileBean.fileList}">
+				<h:outputText>#{file.file.name} successfuly uploaded !</h:outputText>
+			</ui:repeat>
 		</ui:define>
 	</ui:composition>
 </body>

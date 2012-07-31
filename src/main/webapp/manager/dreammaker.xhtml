@@ -8,9 +8,14 @@
 <body>
 	<ui:composition template="/manager/template/mainLayout.xhtml">
 		<ui:define name="managerDiv">
-			<h:form enctype="multipart/form-data">
-				<hh:inputFile id="file_0" name="#{fileBean.fileList.file[0]}"   />
-				<h:commandButton value="Register" action="#{fileBean.uploadFiles}" />
+			<h:form method="post" enctype="multipart/form-data">
+				<ul>
+					<ui:repeat var="file" value="#{fileBean.fileList}" varStatus="status">
+						<li><hh:inputFile id="file_#{status.index}" value="#{file.file}"   /></li>
+					</ui:repeat>
+				</ul>
+				<h:commandButton value="Upload" action="#{fileBean.uploadFiles}" />
+				<h:commandButton value="Add more file" action="#{fileBean.addFileToUpload}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>
