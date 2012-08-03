@@ -127,6 +127,23 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
-
+		<dependency>
+			<groupId>glassfish</groupId>
+			<artifactId>jaxb-api-osgi</artifactId>
+			<version>2.2.6</version>
+			<scope>provided</scope>
+		</dependency>
+				<dependency>
+			<groupId>glassfish</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.1.6-20111206</version>
+			<scope>provided</scope>
+		</dependency>
+  </dependencies>
 </project>
